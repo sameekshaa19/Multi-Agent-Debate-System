@@ -8,7 +8,7 @@ This project includes two implementations:
 
 1. **`debate_system.py`** - **RECOMMENDED** - A simple, working implementation that properly handles turn order and debate flow.
 
-2. **`run_debate.py` & `run_debate_fixed.py`** - LangGraph implementations that demonstrate the DAG structure but may have recursion/turn-order issues in some environments.
+
 
 **For immediate use, please use `debate_system.py`**. The LangGraph versions are included to show the DAG structure as required by the assignment.
 
