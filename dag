@@ -1,0 +1,31 @@
+// Multi-Agent Debate DAG
+digraph {
+	graph [bgcolor=white fontname=Arial margin=0.5 rankdir=TB]
+	node [fontname=Arial fontsize=12 shape=box style="rounded,filled"]
+	edge [fontname=Arial fontsize=10]
+	UserInputNode [label="UserInputNode
+(Topic Input)" color="#0277BD" fillcolor="#E8F4F8"]
+	RoundsControllerNode [label="RoundsControllerNode
+(Turn Management)" color="#EF6C00" fillcolor="#FFF4E6"]
+	AgentANode [label="AgentANode
+(Scientist)" color="#2E7D32" fillcolor="#E8F5E9"]
+	AgentBNode [label="AgentBNode
+(Philosopher)" color="#7B1FA2" fillcolor="#F3E5F5"]
+	JudgeNode [label="JudgeNode
+(Final Judgment)" color="#C62828" fillcolor="#FFEBEE"]
+	END [label=END color="#455A64" fillcolor="#ECEFF1" shape=ellipse]
+	UserInputNode -> RoundsControllerNode [label="topic validated"]
+	RoundsControllerNode -> AgentANode [label="turn: AgentA"]
+	AgentANode -> RoundsControllerNode [label="response complete"]
+	RoundsControllerNode -> AgentBNode [label="turn: AgentB"]
+	AgentBNode -> RoundsControllerNode [label="response complete"]
+	RoundsControllerNode -> JudgeNode [label="all rounds complete
+(8 rounds)"]
+	JudgeNode -> END [label="winner declared"]
+	subgraph cluster_debate_loop {
+		color="#666666" label="Debate Loop (8 Rounds)" style=dashed
+		RoundsControllerNode
+		AgentANode
+		AgentBNode
+	}
+}
